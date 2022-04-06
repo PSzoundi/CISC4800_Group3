@@ -1,12 +1,15 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export default function Landing() {
     const [address, setAddress] = useState('')
+    let navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(address)
+        navigate(`/${address}`)
     }
 
     return (
