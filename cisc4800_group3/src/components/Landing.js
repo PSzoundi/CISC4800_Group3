@@ -9,7 +9,7 @@ export default function Landing() {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(address)
-        navigate(`/${address}`)
+        navigate(`/${address.toLowerCase()}`)
     }
 
     return (
