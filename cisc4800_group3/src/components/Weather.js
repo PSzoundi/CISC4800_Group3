@@ -2,13 +2,17 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router";
 import { useNavigate } from 'react-router-dom';
+import CelsiusInfo from "./CelsiusInfo";
+import FahrenheitInfo from "./FahrenheitInfo";
 
 export default function Weather() {
     let params = useParams()
     let navigate = useNavigate()
 
     const [weatherData, setWeatherData] = useState('')
-    const [tempOption, setTempOption] = useState('')
+    const [tempF, setTempF] = useState(false)
+    const [tempC, setTempC] = useState(false)
+
     const MY_KEY = process.env.REACT_APP_WEATHER_API_KEY
 
     useEffect(() => {
@@ -19,18 +23,16 @@ export default function Weather() {
         navigate('/')
     }
 
-    const handleFormOptions = (e) => {
-        setTempOption(...tempOption, tempOption => e.target.name)
-
-        console.log(tempOption)
+    const handleTempClick = (e) => {
+        e.preventDefault()
         console.log(e.target.name)
-    }
-
-    const changeFormOptions = (e) => {
-        setTempOption(...tempOption, tempOption => e.target.name)
-
-        console.log(tempOption)
-        console.log(e.target.name)
+        if (e.target.name == "Fahrenheit") {
+            setTempF(true)
+            setTempC(false)
+        } else {
+            setTempC(true)
+            setTempF(false)
+        }
     }
 
     const fetchWeatherData = async () => {
@@ -52,19 +54,22 @@ export default function Weather() {
                 <div className="weather-class">
                     <button onClick={goToHome}>HOME</button>
                     <h1>You Entered: {weatherData.location.name}</h1>
-                    <form onClick={handleFormOptions}>
-                        <select id='temp-select'>
-                            <option value='Fahrenheit' name='Fahrenheit' onChange={changeFormOptions}>Fahrenheit</option>
-                            <option value='Celsius' name='Celsius' onChange={changeFormOptions}>Celsius</option>
-                        </select>
+
+                    <form onClick={handleTempClick}>
+                        <button name="Fahrenheit" onChange={e => { setTempF(true); setTempC(false) }}>Fahrenheit</button>
+                        <button name="Celsius" onChange={e => { setTempC(true); setTempF(false) }}>Celsius</button>
                     </form>
-                    <h1>Current Weather: {weatherData.current.temp_f}</h1>
-                    <h1>Conditions: {weatherData.current.condition.text}</h1>
-                    <img src={weatherData.current.condition.icon}/>
-                    <h1>Humidity: {weatherData.current.humidity}%</h1>
-                    <h1>Wind: {weatherData.current.wind_mph}mph</h1>
+
+                    {tempF ? <>{FahrenheitInfo({ weatherData })}</> : <>{CelsiusInfo({ weatherData })}</>}
+
                 </div> : <></>
             }
+
+            {/* {tempC ?
+                <div className="celcius-class">
+                    {CelsiusInfo({ weatherData })}
+                </div> : <></>
+            } */}
         </>
     )
 }
