@@ -29,6 +29,7 @@ export default function Login() {
             <Navbar />
             <form onSubmit={handleSubmit} className="login-form">
                 <label className="login-username">
+                    Username
                     <input className="login-input"
                         value={loginData.username}
                         placeholder="Username"
@@ -38,6 +39,7 @@ export default function Login() {
                     />
                 </label>
                 <label className="login-password">
+                    Password
                     <input className="login-input"
                         value={loginData.password}
                         placeholder="Password"
