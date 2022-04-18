@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router";
-import { useNavigate } from 'react-router-dom';
 import CelsiusInfo from "./CelsiusInfo";
 import FahrenheitInfo from "./FahrenheitInfo";
+import Navbar from './Navbar';
 
 export default function Weather() {
     let params = useParams()
-    let navigate = useNavigate()
 
     const [weatherData, setWeatherData] = useState('')
     const [tempF, setTempF] = useState(false)
@@ -18,10 +17,6 @@ export default function Weather() {
     useEffect(() => {
         fetchWeatherData()
     }, [])
-
-    const goToHome = () => {
-        navigate('/')
-    }
 
     const handleTempClick = (e) => {
         e.preventDefault()
@@ -50,9 +45,9 @@ export default function Weather() {
 
     return (
         <>
+        <Navbar/>
             {weatherData ?
                 <div className="weather-class">
-                    <button onClick={goToHome}>HOME</button>
                     <h1>{weatherData.location.name}, {weatherData.location.region}, {weatherData.location.country}</h1>
 
                     <form onClick={handleTempClick}>
