@@ -22,8 +22,10 @@ export default function Navbar() {
         <div className="navbar">
             <div className="nav-buttons">
                 <button onClick={goToHome}>HOME</button>
+                <div>
                 <button onClick={goToLogin}>LOGIN</button>
                 <button onClick={goToSignUp}>SIGN UP</button>
+                </div>
             </div>
         </div>
     )

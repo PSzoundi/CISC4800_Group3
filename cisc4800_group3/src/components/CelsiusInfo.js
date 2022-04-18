@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router";
 import { useNavigate } from 'react-router-dom';
+import "../styles/WeatherInfo.css"
 
 export default function CelsiusInfo({weatherData}) {
     return (
