@@ -53,7 +53,7 @@ export default function Weather() {
             {weatherData ?
                 <div className="weather-class">
                     <button onClick={goToHome}>HOME</button>
-                    <h1>You Entered: {weatherData.location.name}</h1>
+                    <h1>{weatherData.location.name}, {weatherData.location.region}, {weatherData.location.country}</h1>
 
                     <form onClick={handleTempClick}>
                         <button name="Fahrenheit" onChange={e => { setTempF(true); setTempC(false) }}>Fahrenheit</button>
@@ -64,12 +64,6 @@ export default function Weather() {
 
                 </div> : <></>
             }
-
-            {/* {tempC ?
-                <div className="celcius-class">
-                    {CelsiusInfo({ weatherData })}
-                </div> : <></>
-            } */}
         </>
     )
 }
