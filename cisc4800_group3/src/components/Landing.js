@@ -18,15 +18,19 @@ export default function Landing() {
         <div className="landing">
             <video src={backgroundVideo} autoPlay muted loop id='video' />
 
-            <div className="landing-main-elements">
-            <h1 id="website-title">Current Conditions</h1>
-            <form onSubmit={handleSubmit}>
-                <label id="label-description">
-                    Enter zip code, city name, or address
-                    <input type="text" name="address" onChange={e => setAddress(e.target.value)} />
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
+            <div id="landing-main-elements">
+                <h1 id="website-title">Current Conditions</h1>
+
+                <div id="landing-search-elements">
+                    <form onSubmit={handleSubmit} id="landing-form">
+                        <label>
+                            Enter zip code, city name, or address
+                            <input type="text" name="address" class="landing-input" onChange={e => setAddress(e.target.value)} />
+                        </label>
+                        <input type="submit" value="Submit" />
+                    </form>
+                </div>
+
             </div>
         </div>
     )

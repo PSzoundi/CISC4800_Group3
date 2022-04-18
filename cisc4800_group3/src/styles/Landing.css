@@ -2,22 +2,39 @@ body {
     font-family: 'Arimo', sans-serif;
 }
 
-.landing-main-elements {
+#landing-main-elements {
     margin: 0 auto;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+#landing-search-elements {
+    display: flex;
+    flex-direction: column;
 }
 
 #website-title {
     font-size: 250%;
-    color:rgb(46, 24, 189)
+    color:rgb(46, 24, 189);
 }
 
-#label-description {
+#landing-form {
+    position: absolute;
     font-size: 120%;
-    color:rgb(0, 0, 0)
+    font-weight: 600;
+    color:rgb(0, 0, 0);
+}
+
+.landing-input {
+    margin-top: 10px;
+    border-radius: 20px;
+    border-style: none;
+    height: 2vw;
+    width: 20vw;
 }
 
 #video {
