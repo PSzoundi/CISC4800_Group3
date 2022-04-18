@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import backgroundVideo from "../media/clouds_video.mp4"
 import "../styles/Landing.css"
+import Navbar from './Navbar';
 
 export default function Landing() {
     const [address, setAddress] = useState('')
@@ -16,6 +17,8 @@ export default function Landing() {
 
     return (
         <div className="landing">
+            <Navbar/>
+
             <video src={backgroundVideo} autoPlay muted loop id='video' />
 
             <div id="landing-main-elements">
